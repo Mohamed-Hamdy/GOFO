@@ -21,7 +21,7 @@ jobs:
         java-distribution: temurin
         maven-version: 3.8.7
     - name: Build with Maven
-      run: mvn compile
+      run: mvn -B package --file "GOFO Implementation/pom.xml"
 
     # Add the test step here
     - name: Test with Maven
