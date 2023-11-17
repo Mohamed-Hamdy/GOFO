@@ -20,7 +20,7 @@ public class TestJUnitAdministrator
     public void testeRetornoLoginSenhaDefault()
     {   
         String email = adm.getEmail();
-        String senha = adm.getPasswrod();
+        String senha = adm.getPassword();
 
         assertEquals("admin@gmail.com",email);
         assertEquals("123",senha);
