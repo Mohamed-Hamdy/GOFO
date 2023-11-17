@@ -22,8 +22,8 @@ public class TestJUnitAdministrator
         String email = adm.getEmail();
         String senha = adm.getPasswrod();
 
-        Assert.assertEquals("admin@gmail.com",email);
-        Assert.assertEquals("123",senha);
+        assertEquals("admin@gmail.com",email);
+        assertEquals("123",senha);
     }
 
     //@Test
