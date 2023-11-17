@@ -13,7 +13,7 @@
     </properties>
 
     <build>
-        <sourceDirectory>GOFO Implementation/src</sourceDirectory>
+        <sourceDirectory>GOFO Implementation/src/System</sourceDirectory>
         <testSourceDirectory>GOFO Implementation/src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
