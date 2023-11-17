@@ -1,4 +1,4 @@
-package Core.UI;
+package UI;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
