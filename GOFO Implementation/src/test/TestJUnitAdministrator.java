@@ -2,6 +2,7 @@ package Core;
 
 import org.junit.Test;
 import org.junit.Before;
+import Core.System;
 import UI.SystemUI;
 
 import static org.junit.Assert.assertEquals;
