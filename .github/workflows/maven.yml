@@ -21,7 +21,7 @@ jobs:
         java-distribution: temurin
         maven-version: 3.8.7
     - name: Build with Maven
-      run: run: mvn -B package --file "pom.xml"
+      run: mvn -B package --file "pom.xml"
 
     # Add the test step here
     - name: Test with Maven
