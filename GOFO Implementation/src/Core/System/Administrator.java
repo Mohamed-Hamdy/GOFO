@@ -1,4 +1,4 @@
-package Core.System;
+package System;
 
 import java.util.ArrayList;
 import java.util.Scanner;
