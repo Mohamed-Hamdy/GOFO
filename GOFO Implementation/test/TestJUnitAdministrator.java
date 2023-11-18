@@ -25,7 +25,10 @@ public class TestJUnitAdministrator
         assertEquals("admin@gmail.com",email);
         assertEquals("123",senha);
     }
-
-    //@Test
-    //public void teste
+    
+    @Test
+    public void testeAprovarPlayground()
+    {
+        adm.approvePlayground();
+    }
 }
