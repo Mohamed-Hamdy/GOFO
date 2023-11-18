@@ -29,7 +29,7 @@ public class TestJUnitUserProfile
     
         assertEquals("Rogerio Silva",player.getFullName());
         assertEquals(1,player.getID());
-        assertEquals("1234"1"",player.getPassword());
+        assertEquals("1234",player.getPassword());
         assertEquals("rogerio@email.com",player.getEmail());
         assertEquals(40028922,player.getPhone());
         assertEquals("Rua Teste",player.getLocation());
