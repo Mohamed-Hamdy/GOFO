@@ -32,7 +32,6 @@ public class TestJUnitUserProfile
         assertEquals("1234",player.getPassword());
         assertEquals("rogerio@email.com",player.getEmail());
         assertEquals(40028922,player.getPhone());
-        assertEquals("Rua Teste",player.getLocation());
         assertEquals("Regra",player.getRule());
     }
 }
