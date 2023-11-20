@@ -104,7 +104,7 @@ public class TestJUnitPlayer {
     @Test
     public void testeInserindoBalance()
     {
-        systemIn.provideLines(4000);
+        systemIn.provideLines("4000");
         player.setBalance();
     }
 }
