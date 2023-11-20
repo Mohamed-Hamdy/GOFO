@@ -68,7 +68,7 @@ public class TestJUnitPlayer {
         player.addInbox("Email de teste 1.");
         player.addInbox("Email de teste 2.");
         player.viewInbox();
-        assertEquals("Message No.1: Maven não aceita Scanner. Message No.2: Email de teste 1. Message No.3: Email de teste 2.\\", systemOutRule.getLog().trim());
+        assertEquals("Message No.1: Maven não aceita Scanner.\nMessage No.2: Email de teste 1.\nMessage No.3: Email de teste 2.", systemOutRule.getLog().trim());
     }
     
     @Test
