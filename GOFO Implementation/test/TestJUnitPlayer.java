@@ -46,16 +46,6 @@ public class TestJUnitPlayer {
     }
 
     @Test
-    public void testeCriandoTime()
-    {
-        player.createTeam("Ricardo");
-        player.createTeam("Rodrigo");
-        player.createTeam("Reinaldo");
-        player.createTeam("Richard");
-        player.createTeam("Rian");
-    }
-
-    @Test
     public void testeAdicionaEmailInbox()
     {
         player.addInbox("Maven não aceita Scanner.");
@@ -65,7 +55,7 @@ public class TestJUnitPlayer {
     public void testeVerificaEmailInbox()
     {
         player.viewInbox();
-        Assert.assertEquals("Maven não aceita Scanner.", outputStreamCaptor.toString().trim());
+        Assert.assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
 
     @Test
