@@ -1,17 +1,24 @@
 package test;
 
 import org.junit.Test;
+import org.junit.BeforeEach;
+import org.junit.AfterEach;
 import org.junit.Before;
 import System.Player;
+
+import java.beans.Transient;
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.PrintStream;
+import java.lang.annotation.Target;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class TestJUnitPlayer {
     Player player;
-    InputStream sysInBackup = System.in; // backup System.in to restore it later
-    InputStream in;
+
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();    
     
     @Before
     public void criandoPlayer()
@@ -27,6 +34,17 @@ public class TestJUnitPlayer {
         player.setRule("Regra");
         player.setBalance(1000);
     }
+    
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
+    }
 
     @Test
     public void testeVerificaDadosPlayer()
@@ -40,14 +58,34 @@ public class TestJUnitPlayer {
         assertEquals(1000,player.getBalance());
         //Não existe um getLocation
     }
+
+    @Test
+    public void testeCriandoTime()
+    {
+        player.createTeam("Ricardo");
+        player.createTeam("Rodrigo");
+        player.createTeam("Reinaldo");
+        player.createTeam("Richard");
+        player.createTeam("Rian");
+    }
+
+    @Test
+    public void testeAdicionaEmailInbox()
+    {
+        player.addInbox("Maven não aceita Scanner.");
+    }
     
     @Test
-    public void testePlayerEscrevendoBalance()
+    public void testeVerificaEmailInbox()
     {
-        in = new ByteArrayInputStream("2000".getBytes());
-        System.setIn(in);
-        player.setBalance();
-        assertEquals(2000,player.getBalance());
-        System.setIn(sysInBackup);
+        player.viewInbox();
+        Assert.assertEquals("Maven não aceita Scanner.", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    public void testeDepositaDinheiro()
+    {
+        player.getMoney(200);
+        assertEquals(1200,player.getBalance());
     }
 }
