@@ -7,7 +7,7 @@ import java.io.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-public class TesJUnitPlayer {
+public class TestJUnitPlayer {
     Player player;
     InputStream sysInBackup = System.in; // backup System.in to restore it later
     ByteArrayInputStream in;
