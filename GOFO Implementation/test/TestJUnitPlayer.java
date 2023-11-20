@@ -10,8 +10,8 @@ import static org.junit.Assert.assertThrows;
 
 public class TestJUnitPlayer {
     Player player;
-    //InputStream sysInBackup = System.in; // backup System.in to restore it later
-    //ByteArrayInputStream in;
+    InputStream sysInBackup = System.in; // backup System.in to restore it later
+    ByteArrayInputStream in;
     
     @Before
     public void criandoPlayer()
