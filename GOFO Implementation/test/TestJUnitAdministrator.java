@@ -59,14 +59,14 @@ public class TestJUnitAdministrator
     public void testeBuscarPlaygroundPorNome()
     {
         adm.searchByName("Campo SBC");
-        assertEquals("No Playground Have the same Name Please Try agian.\n", systemOutRule.getLog().trim());
+        assertEquals("Dispaly All PlayGrounds Names.\n\nNo Playground Have the same Name Please Try agian.\n", systemOutRule.getLog().trim());
     }
 
     @Test
     public void testeBuscarPlaygroundPorLugar()
     {
         adm.searchByLocation("SP");
-        assertEquals("No Playground Have the same Location Please Try agian.\n", systemOutRule.getLog().trim());
+        assertEquals("Dispaly All PlayGrounds Location.\n\nNo Playground Have the same Location Please Try agian.\n", systemOutRule.getLog().trim());
     }
 
     @Test
@@ -74,6 +74,7 @@ public class TestJUnitAdministrator
     {
         adm.addComplaints("Esse código é muito estranho.");
         adm.addComplaints("Muito estranho mesmo.");
-        assertEquals("No Playground Have the same Location Please Try agian.\n", systemOutRule.getLog().trim());
+        adm.showComplaints();
+        assertEquals("The complaints list is: \nEsse código é muito estranho.\nMuito estranho mesmo.", systemOutRule.getLog().trim());
     }
 }
