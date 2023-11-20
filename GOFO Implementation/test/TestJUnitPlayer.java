@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThrows;
 public class TestJUnitPlayer {
     Player player;
     InputStream sysInBackup = System.in; // backup System.in to restore it later
-    ByteArrayInputStream in;
+    InputStream in;
     
     @Before
     public void criandoPlayer()
@@ -48,5 +48,6 @@ public class TestJUnitPlayer {
         System.setIn(in);
         player.setBalance();
         assertEquals(2000,player.getBalance());
+        System.setIn(sysInBackup);
     }
 }
