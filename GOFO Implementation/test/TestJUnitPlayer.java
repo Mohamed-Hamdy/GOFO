@@ -3,9 +3,9 @@ package test;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.SystemOutRule;
-import org.junit.contrib.java.lang.system.*;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 import org.junit.Before;
-import org.junit.*;
 import System.Player;
 
 import java.beans.Transient;
