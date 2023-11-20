@@ -59,14 +59,14 @@ public class TestJUnitAdministrator
     public void testeBuscarPlaygroundPorNome()
     {
         adm.searchByName("Campo SBC");
-        assertEquals("Dispaly All PlayGrounds Names.\nNo Playground Have the same Name Please Try agian.\n", systemOutRule.getLog().trim());
+        assertEquals("Dispaly All PlayGrounds Names.\n\nNo Playground Have the same Name Please Try agian.\n", systemOutRule.getLog().trim());
     }
 
     @Test
     public void testeBuscarPlaygroundPorLugar()
     {
         adm.searchByLocation("SP");
-        assertEquals("Dispaly All PlayGrounds Location.\nNo Playground Have the same Location Please Try agian.\n", systemOutRule.getLog().trim());
+        assertEquals("Dispaly All PlayGrounds Location.\n\nNo Playground Have the same Location Please Try agian.\n", systemOutRule.getLog().trim());
     }
 
     @Test
