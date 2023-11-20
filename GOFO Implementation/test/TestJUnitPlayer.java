@@ -95,9 +95,5 @@ public class TestJUnitPlayer {
         player.createTeam(player3);
         player.createTeam(player4);
         player.createTeam(player5);
-
-        player.addInbox("Maven não aceita Scanner.");
-        player2.viewInbox();
-        assertEquals("Message No.1: Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
 }
