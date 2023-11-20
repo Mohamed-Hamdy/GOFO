@@ -106,5 +106,6 @@ public class TestJUnitPlayer {
     {
         systemIn.provideLines("4000");
         player.setBalance();
+        assertEquals(4000,player.getBalance());
     }
 }
