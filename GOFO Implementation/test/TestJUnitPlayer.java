@@ -1,16 +1,19 @@
 package test;
 
 import org.junit.Test;
-import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Before;
 import System.Player;
+
+import java.beans.Transient;
+import java.lang.annotation.Target;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class TestJUnitPlayer {
     Player player;
-
+  
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
@@ -62,7 +65,7 @@ public class TestJUnitPlayer {
     public void testeVerificaEmailInbox()
     {
         player.viewInbox();
-        Assert.assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
+        Assert.assertEquals("Maven não aceita Scanner.", outputStreamCaptor.toString().trim());
     }
 
     @Test
