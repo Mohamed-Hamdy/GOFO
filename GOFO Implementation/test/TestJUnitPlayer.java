@@ -58,8 +58,19 @@ public class TestJUnitPlayer {
     public void testeVerificaEmailInboxVazio()
     {
         player.viewInbox();
-        assertEquals("Your Inbox is Empty.", systemOutRule.getLog().trim());
+        assertEquals("Your Inbox is Empty", systemOutRule.getLog().trim());
     }
+
+    @Test
+    public void testeAdicionaMultiplosEmailsInbox()
+    {
+        player.addInbox("Maven não aceita Scanner.");
+        player.addInbox("Email de teste 1.");
+        player.addInbox("Email de teste 2.");
+        player.viewInbox();
+        assertEquals("Message No.1: Maven não aceita Scanner.\nMessage No.2: Email de teste 1.\nMessage No.3: Email de teste 2.\\", systemOutRule.getLog().trim());
+    }
+    
     @Test
     public void testeDepositaDinheiro()
     {
