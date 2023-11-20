@@ -52,6 +52,8 @@ public class TestJUnitPlayer {
         player.addInbox("Maven não aceita Scanner.");
         player.addInbox("Teste");
         player.addInbox("Teste2");
+        player.viewInbox();
+        assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
     
     @Test
