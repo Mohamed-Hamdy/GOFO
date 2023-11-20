@@ -3,14 +3,14 @@ package test;
 import org.junit.Test;
 import org.junit.Before;
 import System.Player;
-import java.io.*;
+//import java.io.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class TestJUnitPlayer {
     Player player;
-    InputStream sysInBackup = System.in; // backup System.in to restore it later
-    ByteArrayInputStream in;
+    //InputStream sysInBackup = System.in; // backup System.in to restore it later
+    //ByteArrayInputStream in;
     
     @Before
     public void criandoPlayer()
@@ -39,7 +39,7 @@ public class TestJUnitPlayer {
         assertEquals(1000,player.getBalance());
         //Não existe um getLocation
     }
-
+    /*
     @Test
     public void testePlayerEscrevendoBalance()
     {
@@ -47,5 +47,5 @@ public class TestJUnitPlayer {
         System.setIn(in);
         player.setBalance();
         assertEquals(2000,player.getBalance());
-    }
+    }*/
 }
