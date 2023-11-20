@@ -1,15 +1,9 @@
 package test;
 
 import org.junit.Test;
-import org.junit.BeforeEach;
-import org.junit.AfterEach;
 import org.junit.Before;
+import org.junit.Rule;
 import System.Player;
-
-import java.beans.Transient;
-import java.io.ByteArrayInputStream;
-import java.io.PrintStream;
-import java.lang.annotation.Target;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -17,9 +11,9 @@ import static org.junit.Assert.assertThrows;
 public class TestJUnitPlayer {
     Player player;
 
-    private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();    
-    
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
     @Before
     public void criandoPlayer()
     {
@@ -79,7 +73,7 @@ public class TestJUnitPlayer {
     public void testeVerificaEmailInbox()
     {
         player.viewInbox();
-        Assert.assertEquals("Maven não aceita Scanner.", outputStreamCaptor.toString().trim());
+        Assert.assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
 
     @Test
