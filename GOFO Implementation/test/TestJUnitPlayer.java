@@ -46,23 +46,20 @@ public class TestJUnitPlayer {
         //Não existe um getLocation
     }
 
-    @Test
+   @Test
     public void testeAdicionaEmailInbox()
     {
         player.addInbox("Maven não aceita Scanner.");
-        player.addInbox("Teste");
-        player.addInbox("Teste2");
         player.viewInbox();
-        assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
+        assertEquals("Message No.1: Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
     
     @Test
-    public void testeVerificaEmailInbox()
+    public void testeVerificaEmailInboxVazio()
     {
         player.viewInbox();
-        assertEquals("Maven não aceita Scanner.", systemOutRule.getLog().trim());
+        assertEquals("Your Inbox is Empty.", systemOutRule.getLog().trim());
     }
-
     @Test
     public void testeDepositaDinheiro()
     {
