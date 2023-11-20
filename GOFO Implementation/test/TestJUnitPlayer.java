@@ -46,7 +46,7 @@ public class TestJUnitPlayer {
         //Não existe um getLocation
     }
 
-   @Test
+    @Test
     public void testeAdicionaEmailInbox()
     {
         player.addInbox("Maven não aceita Scanner.");
@@ -70,7 +70,7 @@ public class TestJUnitPlayer {
         player.viewInbox();
         assertEquals("Message No.1: Maven não aceita Scanner.\nMessage No.2: Email de teste 1.\nMessage No.3: Email de teste 2.", systemOutRule.getLog().trim());
     }
-    
+
     @Test
     public void testeDepositaDinheiro()
     {
@@ -83,7 +83,6 @@ public class TestJUnitPlayer {
         player.bookingSlots("12:00","Campo SBC");
         player.CancelBooking("Campo SBC", "12:00");
     }
-    
     @Test
     public void testeCriandoTime()
     {
@@ -101,5 +100,4 @@ public class TestJUnitPlayer {
         player2.viewInbox();
         assertEquals("Message No.1: Maven não aceita Scanner.", systemOutRule.getLog().trim());
     }
-}
 }
