@@ -77,4 +77,29 @@ public class TestJUnitPlayer {
         player.getMoney(200);
         assertEquals(1200,player.getBalance());
     }
+    @Test
+    public void testeGetCancelPlayground()
+    {
+        player.bookingSlots("12:00","Campo SBC");
+        player.CancelBooking("Campo SBC", "12:00");
+    }
+    
+    @Test
+    public void testeCriandoTime()
+    {
+        Player player2 = new Player();
+        Player player3 = new Player();
+        Player player4 = new Player();
+        Player player5 = new Player();
+
+        player.createTeam(player2);
+        player.createTeam(player3);
+        player.createTeam(player4);
+        player.createTeam(player5);
+
+        player.addInbox("Maven não aceita Scanner.");
+        player2.viewInbox();
+        assertEquals("Message No.1: Maven não aceita Scanner.", systemOutRule.getLog().trim());
+    }
+}
 }
