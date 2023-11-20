@@ -28,17 +28,6 @@ public class TestJUnitPlayer {
         player.setRule("Regra");
         player.setBalance(1000);
     }
-    
-
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
-    @AfterEach
-    public void tearDown() {
-        System.setOut(standardOut);
-    }
 
     @Test
     public void testeVerificaDadosPlayer()
