@@ -2,7 +2,7 @@ package test;
 
 import org.junit.Test;
 import org.junit.Rule;
-import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.contrib.java.lang.system;
 import org.junit.Before;
 import System.Player;
 
@@ -17,6 +17,9 @@ public class TestJUnitPlayer {
   
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
+    @Rule
+    public final TextFromStandardInputStream systemIn = emptyStandardInputStream();
 
     @Before
     public void criandoPlayer()
@@ -95,5 +98,11 @@ public class TestJUnitPlayer {
         player.createTeam(player3);
         player.createTeam(player4);
         player.createTeam(player5);
+    }
+    @Test
+    public void testeInserindoBalance()
+    {
+        systemIn.provideLines(100);
+        player.setBalance();
     }
 }
