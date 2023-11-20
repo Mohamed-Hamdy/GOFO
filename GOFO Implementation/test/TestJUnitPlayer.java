@@ -3,7 +3,7 @@ package test;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.SystemOutRule;
-import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+import org.junit.contrib.java.lang.system.*;
 import org.junit.Before;
 import System.Player;
 
