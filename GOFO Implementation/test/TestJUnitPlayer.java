@@ -50,6 +50,8 @@ public class TestJUnitPlayer {
     public void testeAdicionaEmailInbox()
     {
         player.addInbox("Maven não aceita Scanner.");
+        player.addInbox("Teste");
+        player.addInbox("Teste2");
     }
     
     @Test
