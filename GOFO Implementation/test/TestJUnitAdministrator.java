@@ -53,18 +53,6 @@ public class TestJUnitAdministrator
     @Test
     public void testeAdicionaRequestPlayground()
     {   
-        systemIn.provideLines("100");
-        p1.setPrice();
-
-        systemIn.provideLines("available");
-        p1.setStatus();
-
-        systemIn.provideLines("0","30");
-        p1.setBooking();
-
-        systemIn.provideLines("SP");
-        p1.setLocation();
-
         adm.playgroundRequests(p1);
 
         systemIn.provideLines("yes");
@@ -72,7 +60,7 @@ public class TestJUnitAdministrator
 
         adm.getApproved();
 
-        //assertEquals("CampoSP",systemOutRule.getLog().trim());
+        assertEquals("CampoSP",systemOutRule.getLog().trim());
     }
 
     @Test
@@ -99,15 +87,9 @@ public class TestJUnitAdministrator
     }
 
     @Test
-    public void testeMostraPlayground()
-    {
-        adm.displayAllPlaygrounds();
-    }
-
-    @Test
     public void testeBuscarPlaygroundPorNome()
     {
-        adm.searchByName("Campo SBC");
+        adm.searchByName("CampoSP");
     }
 
     @Test
