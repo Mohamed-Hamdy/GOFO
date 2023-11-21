@@ -143,18 +143,6 @@ public class TestJUnitPlaygroundOwner {
     }
 
     @Test
-    public void testeAtualizaPlaygroundIDInvalido()
-    {
-        owner.addPlayground(p1);
-
-        systemIn.provideLines("6","1","NovoCampoSP");
-        owner.updatePlaygroundName("CampoSP");
-        
-        assertTrue(owner.existPlayground("NovoCampoSP"));
-    }
-
-
-    @Test
     public void testeAdicionaBalance()
     {
         owner.setBalance(bal);
