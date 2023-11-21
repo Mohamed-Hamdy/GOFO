@@ -42,7 +42,6 @@ public class TestJUnitPlaygroundOwner {
         owner.setPhone(40028922);
         owner.setLocation("SP");
         owner.setRule("Regra");
-        owner.setBalance(1000);
 
         p1 = new Playground();
 
@@ -84,7 +83,6 @@ public class TestJUnitPlaygroundOwner {
         assertEquals("rogerio@email.com",owner.getEmail());
         assertEquals(40028922,owner.getPhone());
         assertEquals("Regra",owner.getRule());
-        assertEquals(1000,owner.getBalance());
     }
 
     @Test
