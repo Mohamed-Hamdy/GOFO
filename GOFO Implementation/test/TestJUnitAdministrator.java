@@ -2,12 +2,11 @@ package test;
 
 import org.junit.Test;
 import org.junit.Rule;
-import org.junit.Before;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
+import org.junit.Before;
 
-import System.Administrator;
 import System.Playground;
 
 import java.beans.Transient;
@@ -16,11 +15,9 @@ import java.lang.annotation.Target;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-public class TestJUnitAdministrator
-{
-    Administrator adm;
-    Playground p1;
-
+public class TestJUnitPlayground {
+    Playground playground;
+  
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
@@ -28,146 +25,58 @@ public class TestJUnitAdministrator
     public final TextFromStandardInputStream systemIn = emptyStandardInputStream();
 
     @Before
-    public void testeCriandoAdmEPlayground()
+    public void criandoPlayground()
     {
-        adm = new Administrator();
-        p1 = new Playground();
-
-        p1.setName("CampoSP");
-        p1.setOwner("Ricardo");
-        p1.setCancellationPeriod(10);
-    }
-
-    @Test
-    public void testeAdicionaRequestPlayground()
-    {   
-        
-        adm.playgroundRequests(p1);
-
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        adm.displayAllPlaygrounds();
-    }
-
-    @Test
-    public void testePesquisaPorNome()
-    {   
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        adm.searchByName("CampoSP");
-    }
-
-    @Test
-    public void testePesquisaPorLugar()
-    {   
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        systemIn.provideLines("SP");
-        p1.setLocation();
-
-        adm.searchByLocation("SP");
-    }
-
-    @Test
-    public void testeMostraTodosPlaygroundsDisponiveisPorNome()
-    {   
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-        
-        systemIn.provideLines("available");
-        p1.setStatus();
-
-        adm.displayAllavailablePlaygroundsNames();
-    }
-
-    @Test
-    public void testeAlugaPorLugar()
-    {   
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        systemIn.provideLines("SP");
-        p1.setLocation();
-
-        systemIn.provideLines("0","30");
-        p1.setBooking();
-
-        adm.bookByLocation("SP", "Rodrigo", 100);
-    }
-
-    @Test
-    public void testeAlugaPorNome()
-    {   
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        systemIn.provideLines("0","30");
-        p1.setBooking();
-
-        adm.bookByName("CampoSP", "Rodrigo", 100);
-    }
-
-    @Test
-    public void testeRetornoLoginSenhaDefault()
-    {   
-        String email = adm.getEmail();
-        String senha = adm.getPassword();
-
-        assertEquals("admin@gmail.com",email);
-        assertEquals("123",senha);
-    }
+        playground = new Playground();
+        playground.setName("Campo SBC");
+        playground.setOwner("Ricardo");
+        playground.setCancellationPeriod(10);
     
-    @Test
-    public void testeAprovarPlayground()
-    {
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
     }
 
     @Test
-    public void testeBuscarPlaygroundPorNome()
+    public void testeRecuperaDadosPlayground()
     {
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        adm.searchByName("CampoSP");
+        assertEquals("Campo SBC",playground.getName());
+        assertEquals("Ricardo",playground.getOwner());
+        assertEquals(10,playground.getCancellationPeriod());
     }
 
     @Test
-    public void testeBuscarPlaygroundPorLugar()
+    public void testeAdicionandoLocation()
     {
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
         systemIn.provideLines("SP");
-        p1.setLocation();
-
-        adm.searchByLocation("SP");
+        playground.setLocation();
+        assertEquals("SP",playground.getLocation());
     }
 
     @Test
-    public void testeSuspenderPlayground()
+    public void testeAdicionandoPrice()
     {
-        adm.suspendPlayground("CampoSP");
-        systemIn.provideLines("yes");
-        adm.unSuspendPlayground();
+        systemIn.provideLines("50");
+        playground.setPrice();
+        assertEquals(50,playground.getPrice());
     }
 
     @Test
-    public void testeDeletarPlaygroun()
+    public void testeAdicionandoStatusDisponivelEAlugandoECancelando()
     {
-        adm.deletePlayground("CampoSP");
+        systemIn.provideLines("available");
+        playground.setStatus();
+        assertEquals("available", playground.getStatus());
+
+        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
+        playground.cancelBooking("20/10/2023", "12:00");
     }
 
     @Test
-    public void testeAdicionarReclamações()
+    public void testeAdicionandoStatusIndisponivelETentandoAlugar()
     {
-        adm.addComplaints("Esse código é muito estranho.");
-        adm.addComplaints("Muito estranho mesmo.");
-        adm.showComplaints();
-        assertEquals("The complaints list is: \n1Esse código é muito estranho.\n2Muito estranho mesmo.", systemOutRule.getLog().trim());
+        systemIn.provideLines("not available");
+        playground.setStatus();
+        assertEquals("not available", playground.getStatus());
+
+        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
+        assertEquals("This playground isn't available yet", systemOutRule.getLog().trim());
     }
 }
