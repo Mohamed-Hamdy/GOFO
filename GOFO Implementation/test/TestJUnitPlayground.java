@@ -30,6 +30,16 @@ public class TestJUnitPlayground {
         playground = new Playground();
         playground.setName("Campo SBC");
         playground.setOwner("Ricardo");
+        playground.setCancellationPeriod(10);
+    
+    }
+
+    @Test
+    public void testeRecuperaDadosPlayground()
+    {
+        assertEquals("Campo SBC",playground.getName());
+        assertEquals("Ricardo",playground.getOwner());
+        assertEquals(10,playground.getCancellationPeriod());
     }
 
     @Test
@@ -49,14 +59,32 @@ public class TestJUnitPlayground {
     }
 
     @Test
-    public void testeAdicionandoStatusInvalido()
+    public void testeAdicionandoStatusDisponivelEAlugando()
     {
         systemIn.provideLines("available");
         playground.setStatus();
         assertEquals("available", playground.getStatus());
 
+        playground.bookingTheSlot("Ricardo", 12, 20);
+        assertEquals("not available", playground.getStatus());
+    }
+
+    @Test
+    public void testeAdicionandoStatusIndisponivelETentandoAlugar()
+    {
         systemIn.provideLines("not available");
         playground.setStatus();
         assertEquals("not available", playground.getStatus());
+
+        playground.bookingTheSlot("Ricardo", 12, 20);
+        assertEquals("This playground isn't available yet", systemOutRule.getLog().trim());
+    }
+
+    @Test
+    public void testeAdicionandoStatusInvalido()
+    {
+        systemIn.provideLines("invalido");
+        playground.setStatus();
+        assertEquals("invalid input please enter ( available or not available)", playground.getStatus());
     }
 }
