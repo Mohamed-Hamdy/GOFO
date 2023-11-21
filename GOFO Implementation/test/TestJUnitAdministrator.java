@@ -36,27 +36,16 @@ public class TestJUnitAdministrator
         p1.setName("CampoSP");
         p1.setOwner("Ricardo");
         p1.setCancellationPeriod(10);
-
-        systemIn.provideLines("100");
-        p1.setPrice();
-
-        systemIn.provideLines("available");
-        p1.setStatus();
-
-        systemIn.provideLines("0","30");
-        p1.setBooking();
-
-        systemIn.provideLines("SP");
-        p1.setLocation();
-
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
     }
 
     @Test
     public void testeAdicionaRequestPlayground()
     {   
+        
         adm.playgroundRequests(p1);
+
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
 
         adm.displayAllPlaygrounds();
     }
@@ -64,30 +53,60 @@ public class TestJUnitAdministrator
     @Test
     public void testePesquisaPorNome()
     {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
         adm.searchByName("CampoSP");
     }
 
     @Test
     public void testePesquisaPorLugar()
     {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
+        systemIn.provideLines("SP");
+        p1.setLocation();
+
         adm.searchByLocation("SP");
     }
 
     @Test
     public void testeMostraTodosPlaygroundsDisponiveisPorNome()
     {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+        
+        systemIn.provideLines("available");
+        p1.setStatus();
+
         adm.displayAllavailablePlaygroundsNames();
     }
 
     @Test
     public void testeAlugaPorLugar()
     {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
+        systemIn.provideLines("SP");
+        p1.setLocation();
+
+        systemIn.provideLines("0","30");
+        p1.setBooking();
+
         adm.bookByLocation("SP", "Rodrigo", 100);
     }
 
     @Test
-    public void testeAlugaPornome()
+    public void testeAlugaPorNome()
     {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
+        systemIn.provideLines("0","30");
+        p1.setBooking();
+
         adm.bookByName("CampoSP", "Rodrigo", 100);
     }
 
@@ -111,12 +130,21 @@ public class TestJUnitAdministrator
     @Test
     public void testeBuscarPlaygroundPorNome()
     {
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
         adm.searchByName("CampoSP");
     }
 
     @Test
     public void testeBuscarPlaygroundPorLugar()
     {
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
+        systemIn.provideLines("SP");
+        p1.setLocation();
+
         adm.searchByLocation("SP");
     }
 
