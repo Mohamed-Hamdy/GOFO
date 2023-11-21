@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public class TestJUnitPlaygroundOwner {
-    PlayGroundOwner owner;
+    PlaygroundOwner owner;
     Playground p1;
     Playground p2;
   
