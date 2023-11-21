@@ -52,6 +52,7 @@ public class TestJUnitPlaygroundOwner {
 
         bal = new eWallet();
         bal.setBalance(1000);
+        owner.setBalance(bal);
     }
 
     @Test
@@ -142,7 +143,6 @@ public class TestJUnitPlaygroundOwner {
     @Test
     public void testeAdicionaBalance()
     {
-        owner.setBalance(bal);
         assertEquals(1000,owner.getMyBalance());
     }
 
@@ -170,7 +170,7 @@ public class TestJUnitPlaygroundOwner {
         
         systemIn.provideLines("50");
         p1.setPrice();
-        
+
         owner.payMoney("CampoSP", 3);
         assertEquals(850,owner.getMyBalance());
     }
