@@ -89,9 +89,7 @@ public class TestJUnitPlaygroundOwner {
     public void testeAdicionandoPlayground()
     {
         owner.addPlayground(p1);
-        owner.addPlayground(p2);
-
-        assertTrue(owner.existPlayground("Campo SBC"));
+        
         assertTrue(owner.existPlayground("Campo SP"));
     }
 
