@@ -2,12 +2,12 @@ package test;
 
 import org.junit.Test;
 import org.junit.Rule;
+import org.junit.Before;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
-import org.junit.Before;
+
 import System.Administrator;
-import System.Player;
 import System.Playground;
 
 import java.beans.Transient;
@@ -19,6 +19,7 @@ import static org.junit.Assert.assertThrows;
 public class TestJUnitAdministrator
 {
     Administrator adm;
+    Playground p1;
 
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -27,9 +28,47 @@ public class TestJUnitAdministrator
     public final TextFromStandardInputStream systemIn = emptyStandardInputStream();
 
     @Before
-    public void testeCriandoAdm()
+    public void testeCriandoAdmEPlayground()
     {
         adm = new Administrator();
+        p1 = new Playground();
+
+        p1.setName("CampoSP");
+        p1.setOwner("Ricardo");
+        p1.setCancellationPeriod(10);
+
+        // systemIn.provideLines("100");
+        // p1.setPrice();
+
+        // systemIn.provideLines("available");
+        // p1.setStatus();
+
+        // systemIn.provideLines("0","30");
+        // p1.setBooking();
+
+        // systemIn.provideLines("SP");
+        // p1.setLocation();
+    }
+
+    @Test
+    public void testeAdicionaRequestPlayground()
+    {   
+        systemIn.provideLines("100");
+        p1.setPrice();
+
+        ystemIn.provideLines("available");
+        p1.setStatus();
+
+        systemIn.provideLines("0","30");
+        p1.setBooking();
+
+        systemIn.provideLines("SP");
+        p1.setLocation();
+
+        adm.playgroundRequests(p1);
+
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
     }
 
     @Test
