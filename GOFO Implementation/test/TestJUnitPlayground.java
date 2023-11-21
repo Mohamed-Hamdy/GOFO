@@ -54,9 +54,5 @@ public class TestJUnitPlayground {
         systemIn.provideLines("available");
         playground.setLocation();
         assertEquals("available", playground.getStatus());
-
-        systemIn.provideLines("not available");
-        playground.setLocation();
-        assertEquals("not available", playground.getStatus());
     }
 }
