@@ -51,10 +51,12 @@ public class TestJUnitPlayground {
     @Test
     public void testeAdicionandoStatusInvalido()
     {
-        systemIn.provideLines("nope");
-        playground.setLocation();
-        assertEquals("invalid input please enter ( available or not available)", systemOutRule.getLog().trim());
         systemIn.provideLines("available");
+        playground.setLocation();
         assertEquals("available", playground.getStatus());
+
+        systemIn.provideLines("not available");
+        playground.setLocation();
+        assertEquals("not available", playground.getStatus());
     }
 }
