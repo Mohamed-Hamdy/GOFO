@@ -2,12 +2,12 @@ package test;
 
 import org.junit.Test;
 import org.junit.Rule;
+import org.junit.Before;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
-import org.junit.Before;
 
-import System.Playground;
+import System.Administrator;
 
 import java.beans.Transient;
 import java.lang.annotation.Target;
@@ -15,9 +15,11 @@ import java.lang.annotation.Target;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-public class TestJUnitPlayground {
-    Playground playground;
-  
+public class TestJUnitAdministrator
+{
+    Administrator adm;
+    Playground p1;
+
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
@@ -25,58 +27,74 @@ public class TestJUnitPlayground {
     public final TextFromStandardInputStream systemIn = emptyStandardInputStream();
 
     @Before
-    public void criandoPlayground()
+    public void testeCriandoAdmEPlayground()
     {
-        playground = new Playground();
-        playground.setName("Campo SBC");
-        playground.setOwner("Ricardo");
-        playground.setCancellationPeriod(10);
-    
+        adm = new Administrator();
+        p1 = new Playground();
+
+        p1.setName("CampoSP");
+        p1.setOwner("Ricardo");
+        p1.setCancellationPeriod(10);
     }
 
     @Test
-    public void testeRecuperaDadosPlayground()
-    {
-        assertEquals("Campo SBC",playground.getName());
-        assertEquals("Ricardo",playground.getOwner());
-        assertEquals(10,playground.getCancellationPeriod());
+    public void testeAdicionaRequestPlayground()
+    {     
+        adm.playgroundRequests(p1);
+
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
     }
 
     @Test
-    public void testeAdicionandoLocation()
-    {
+    public void testePesquisaPorNome()
+    {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
+        adm.searchByName("CampoSP");
+    }
+
+    @Test
+    public void testePesquisaPorLugar()
+    {   
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+
         systemIn.provideLines("SP");
-        playground.setLocation();
-        assertEquals("SP",playground.getLocation());
+        p1.setLocation();
+
+        adm.searchByLocation("SP");
+    }
+
+
+    @Test
+    public void testeRetornoLoginSenhaDefault()
+    {   
+        String email = adm.getEmail();
+        String senha = adm.getPassword();
+
+        assertEquals("admin@gmail.com",email);
+        assertEquals("123",senha);
     }
 
     @Test
-    public void testeAdicionandoPrice()
+    public void testeDeletarPlaygroun()
     {
-        systemIn.provideLines("50");
-        playground.setPrice();
-        assertEquals(50,playground.getPrice());
+        adm.playgroundRequests(p1);
+
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
+        
+        adm.deletePlayground("CampoSP");
     }
 
     @Test
-    public void testeAdicionandoStatusDisponivelEAlugandoECancelando()
+    public void testeAdicionarReclamações()
     {
-        systemIn.provideLines("available");
-        playground.setStatus();
-        assertEquals("available", playground.getStatus());
-
-        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
-        playground.cancelBooking("20/10/2023", "12:00");
-    }
-
-    @Test
-    public void testeAdicionandoStatusIndisponivelETentandoAlugar()
-    {
-        systemIn.provideLines("not available");
-        playground.setStatus();
-        assertEquals("not available", playground.getStatus());
-
-        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
-        assertEquals("This playground isn't available yet", systemOutRule.getLog().trim());
+        adm.addComplaints("Esse código é muito estranho.");
+        adm.addComplaints("Muito estranho mesmo.");
+        adm.showComplaints();
+        assertEquals("The complaints list is: \n1Esse código é muito estranho.\n2Muito estranho mesmo.", systemOutRule.getLog().trim());
     }
 }
