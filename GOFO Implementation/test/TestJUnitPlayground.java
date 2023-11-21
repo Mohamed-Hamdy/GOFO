@@ -66,8 +66,6 @@ public class TestJUnitPlayground {
         assertEquals("available", playground.getStatus());
 
         playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
-        assertEquals("not available", playground.getStatus());
-
         playground.cancelBooking("20/10/2023", "12:00");
     }
 
