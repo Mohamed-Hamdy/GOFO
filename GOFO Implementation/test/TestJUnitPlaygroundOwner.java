@@ -77,7 +77,7 @@ public class TestJUnitPlaygroundOwner {
     @Test
     public void testeVerificaDadosOwner()
     {
-        assertEquals("Rogerio Silva",owner.getFullName());
+        assertEquals("Ricardo Silva",owner.getFullName());
         assertEquals(1,owner.getID());
         assertEquals("1234",owner.getPassword());
         assertEquals("rogerio@email.com",owner.getEmail());
