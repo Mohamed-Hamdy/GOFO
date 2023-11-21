@@ -52,7 +52,11 @@ public class TestJUnitPlayground {
     public void testeAdicionandoStatusInvalido()
     {
         systemIn.provideLines("available");
-        playground.setLocation();
+        playground.setStatus();
         assertEquals("available", playground.getStatus());
+
+        systemIn.provideLines("not available");
+        playground.setStatus();
+        assertEquals("not available", playground.getStatus());
     }
 }
