@@ -88,10 +88,10 @@ public class TestJUnitPlaygroundOwner {
     {
         owner.addPlayground(p1);
 
-        systemIn.provideLines("2","NovoCampoSP");
-        owner.updatePlaygroundName("SBC");
+        systemIn.provideLines("2","SBC");
+        owner.updatePlaygroundName("CampoSP");
         
-        //assertEquals("SBC",p1.getLocation());
+        assertEquals("SBC",p1.getLocation());
     }
 
     @Test
