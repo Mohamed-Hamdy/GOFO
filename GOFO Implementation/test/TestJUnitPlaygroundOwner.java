@@ -2,10 +2,11 @@ package test;
 
 import org.junit.Test;
 import org.junit.Rule;
-import org.junit.Before;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
+import org.junit.Before;
+
 
 import System.PlaygroundOwner;
 import System.Playground;
@@ -49,9 +50,6 @@ public class TestJUnitPlaygroundOwner {
         p1.setName("Campo SP");
         p1.setOwner("Ricardo");
         p1.setCancellationPeriod(10);
-
-        // systemIn.provideLines("50");
-        // p1.setPrice();
 
         bal = new eWallet();
         bal.setBalance(1000);
@@ -102,6 +100,9 @@ public class TestJUnitPlaygroundOwner {
     @Test
     public void testePagamento()
     {
+        systemIn.provideLines("50");
+        p1.setPrice();
+
         owner.payMoney("Campo SP", 3);
         assertEquals(850,owner.getMyBalance());
     }
