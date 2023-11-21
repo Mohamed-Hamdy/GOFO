@@ -9,6 +9,7 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import System.PlaygroundOwner;
 import System.Playground;
+import System.eWallet;
 
 import java.beans.Transient;
 import java.lang.annotation.Target;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class TestJUnitPlaygroundOwner {
     PlaygroundOwner owner;
     Playground p1;
-    Playground p2;
+    eWallet bal;
   
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -58,6 +59,7 @@ public class TestJUnitPlaygroundOwner {
         systemIn.provideLines("50");
         p1.setPrice();
 
+        bal.setBalance(1000);
     }
 
     @Test
@@ -72,16 +74,39 @@ public class TestJUnitPlaygroundOwner {
     }
 
     @Test
-    public void testeAdicionaModificaPlayground()
+    public void testeAdicionaPlayground()
     {
         owner.addPlayground(p1);
-
         assertTrue(owner.existPlayground("Campo SP"));
+    }
 
-        systemIn.provideLines("1","1","1");
-        owner.updatePlaygroundName("Campo SP");
+    @Test
+    public void testeAdicionaBalance()
+    {
+        owner.setBalance(bal);
+        assertEquals(1000,owner.getMyBalance());
+    }
 
-        assertEquals("playground name updated successfully!!",systemOutRule.getLog().trim());
+    @Test
+    public void testeListaPlayground()
+    {
+        owner.getListofPlayground();
+        assertEquals("Campo SP",systemOutRule.getLog().trim());
+    }
+
+    @Test
+    public void testeAdiconaMensagem()
+    {
+        owner.addRecieveMsg("Olha playground");
+        owner.displayRecieveMsg();
+
+        assertEquals("Olha playground",systemOutRule.getLog().trim());
+    }
+
+    @Test
+    public void testePagamento()
+    {
+        owner.payMoney("Campo SP", 3);
+        assertEquals(850,owner.getMyBalance());
     }
 }
-
