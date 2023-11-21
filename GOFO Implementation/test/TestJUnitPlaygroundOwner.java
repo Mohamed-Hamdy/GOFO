@@ -59,6 +59,7 @@ public class TestJUnitPlaygroundOwner {
         systemIn.provideLines("50");
         p1.setPrice();
 
+        bal = new eWallet();
         bal.setBalance(1000);
     }
 
@@ -87,26 +88,26 @@ public class TestJUnitPlaygroundOwner {
         assertEquals(1000,owner.getMyBalance());
     }
 
-    // @Test
-    // public void testeListaPlayground()
-    // {
-    //     owner.getListofPlayground();
-    //     assertEquals("Campo SP",systemOutRule.getLog().trim());
-    // }
+    @Test
+    public void testeListaPlayground()
+    {
+        owner.getListofPlayground();
+        assertEquals("Campo SP",systemOutRule.getLog().trim());
+    }
 
-    // @Test
-    // public void testeAdiconaMensagem()
-    // {
-    //     owner.addRecieveMsg("Olha playground");
-    //     owner.displayRecieveMsg();
+    @Test
+    public void testeAdiconaMensagem()
+    {
+        owner.addRecieveMsg("Olha playground");
+        owner.displayRecieveMsg();
 
-    //     assertEquals("Olha playground",systemOutRule.getLog().trim());
-    // }
+        assertEquals("Olha playground",systemOutRule.getLog().trim());
+    }
 
-    // @Test
-    // public void testePagamento()
-    // {
-    //     owner.payMoney("Campo SP", 3);
-    //     assertEquals(850,owner.getMyBalance());
-    // }
+    @Test
+    public void testePagamento()
+    {
+        owner.payMoney("Campo SP", 3);
+        assertEquals(850,owner.getMyBalance());
+    }
 }
