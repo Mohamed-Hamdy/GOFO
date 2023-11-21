@@ -91,6 +91,7 @@ public class TestJUnitPlaygroundOwner {
     @Test
     public void testeListaPlayground()
     {
+        owner.addPlayground(p1);
         owner.getListofPlayground();
         assertEquals("Campo SP",systemOutRule.getLog().trim());
     }
