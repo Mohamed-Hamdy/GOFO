@@ -34,7 +34,7 @@ public class TestJUnitPlaygroundScedule {
     {
         systemIn.provideLines("12","22");
         schedule.setschedule();
-        assertEquals("12",schedule.getBegin());
-        assertEquals("22",schedule.getEnd());
+        assertEquals(12,schedule.getBegin());
+        assertEquals(22,schedule.getEnd());
     }
 }
