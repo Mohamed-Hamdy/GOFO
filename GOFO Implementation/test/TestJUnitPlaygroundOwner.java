@@ -73,7 +73,7 @@ public class TestJUnitPlaygroundOwner {
     }
 
     @Test
-    public void testeAtualizaPlayground()
+    public void testeAtualizaPlaygroundNome()
     {
         owner.addPlayground(p1);
 
@@ -81,6 +81,17 @@ public class TestJUnitPlaygroundOwner {
         owner.updatePlaygroundName("CampoSP");
         
         assertTrue(owner.existPlayground("NovoCampoSP"));
+    }
+
+    @Test
+    public void testeAtualizaPlaygroundLocation()
+    {
+        owner.addPlayground(p1);
+
+        systemIn.provideLines("2","NovoCampoSP");
+        owner.updatePlaygroundName("SBC");
+        
+        assertEquals("SBC",p1.getLocation());
     }
 
     @Test
