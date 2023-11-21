@@ -65,7 +65,7 @@ public class TestJUnitPlayground {
         playground.setStatus();
         assertEquals("available", playground.getStatus());
 
-        playground.bookingTheSlot("Ricardo", 12, 20);
+        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
         assertEquals("not available", playground.getStatus());
     }
 
