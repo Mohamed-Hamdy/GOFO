@@ -46,7 +46,7 @@ public class TestJUnitPlaygroundOwner {
 
         p1 = new Playground();
 
-        p1.setName("Campo SP");
+        p1.setName("CampoSP");
         p1.setOwner("Ricardo");
         p1.setCancellationPeriod(10);
 
@@ -69,7 +69,18 @@ public class TestJUnitPlaygroundOwner {
     public void testeAdicionaPlayground()
     {
         owner.addPlayground(p1);
-        assertTrue(owner.existPlayground("Campo SP"));
+        assertTrue(owner.existPlayground("CampoSP"));
+    }
+
+    @Test
+    public void testeAtualizaPlayground()
+    {
+        owner.addPlayground(p1);
+
+        systemIn.provideLines("1","NovoCampoSP");
+        owner.updatePlaygroundName("CampoSP");
+        
+        assertTrue(owner.existPlayground("NovoCampoSP"));
     }
 
     @Test
@@ -84,7 +95,7 @@ public class TestJUnitPlaygroundOwner {
     {
         owner.addPlayground(p1);
         owner.getListofPlayground();
-        assertEquals("Campo SP",systemOutRule.getLog().trim());
+        assertEquals("CampoSP",systemOutRule.getLog().trim());
     }
 
     @Test
