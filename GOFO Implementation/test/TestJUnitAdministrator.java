@@ -56,7 +56,7 @@ public class TestJUnitAdministrator
         systemIn.provideLines("100");
         p1.setPrice();
 
-        ystemIn.provideLines("available");
+        systemIn.provideLines("available");
         p1.setStatus();
 
         systemIn.provideLines("0","30");
