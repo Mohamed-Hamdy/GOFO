@@ -8,6 +8,7 @@ import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import System.Administrator;
+import System.Playground;
 
 import java.beans.Transient;
 import java.lang.annotation.Target;
