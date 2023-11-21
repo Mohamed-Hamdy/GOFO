@@ -58,20 +58,6 @@ public class TestJUnitPlaygroundOwner {
         systemIn.provideLines("50");
         p1.setPrice();
 
-        p2 = new Playground();
-
-        p2.setName("Campo SP");
-        p2.setOwner("Ricardo");
-        p2.setCancellationPeriod(10);
-        
-        systemIn.provideLines("available");
-        p2.setStatus();
-
-        systemIn.provideLines("SP");
-        p2.setLocation();
-
-        systemIn.provideLines("50");
-        p2.setPrice();
     }
 
     @Test
@@ -91,7 +77,7 @@ public class TestJUnitPlaygroundOwner {
         owner.addPlayground(p1);
 
         assertTrue(owner.existPlayground("Campo SP"));
-        
+
         systemIn.provideLines("1","Novo Campo SP");
         owner.updatePlaygroundName("Campo SP");
 
