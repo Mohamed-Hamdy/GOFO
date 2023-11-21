@@ -80,7 +80,7 @@ public class TestJUnitPlaygroundOwner {
         assertEquals("Ricardo Silva",owner.getFullName());
         assertEquals(1,owner.getID());
         assertEquals("1234",owner.getPassword());
-        assertEquals("rogerio@email.com",owner.getEmail());
+        assertEquals("ricardo@email.com",owner.getEmail());
         assertEquals(40028922,owner.getPhone());
         assertEquals("Regra",owner.getRule());
     }
