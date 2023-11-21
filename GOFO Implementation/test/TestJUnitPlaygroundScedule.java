@@ -37,4 +37,25 @@ public class TestJUnitPlaygroundScedule {
         assertEquals(12,schedule.getBegin());
         assertEquals(22,schedule.getEnd());
     }
+
+    @Test
+    public void testeAdiconandoPrice()
+    {
+        systemIn.provideLines("50");
+        schedule.setPrice();
+        assertEquals(50,schedule.getTimeSlotPerHour());
+    }
+
+    @Test
+    public void testeRecuperaIndiceDia()
+    {
+        assertEquals(1,schedule.getDayIndex("sunday"));
+        assertEquals(2,schedule.getDayIndex("monday"));
+        assertEquals(3,schedule.getDayIndex("tuesday"));
+        assertEquals(4,schedule.getDayIndex("wendesday"));
+        assertEquals(5,schedule.getDayIndex("thursday"));
+        assertEquals(6,schedule.getDayIndex("friday"));
+        assertEquals(7,schedule.getDayIndex("saturday"));
+        assertEquals(-1,schedule.getDayIndex("erro"));
+    }
 }
