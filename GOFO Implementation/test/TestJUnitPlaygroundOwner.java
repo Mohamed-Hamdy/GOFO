@@ -42,7 +42,6 @@ public class TestJUnitPlaygroundOwner {
         owner.setPhone(40028922);
         owner.setLocation("SP");
         owner.setRule("Regra");
-        owner.addPlayground(p1);
 
         p1 = new Playground();
 
@@ -87,14 +86,12 @@ public class TestJUnitPlaygroundOwner {
     }
 
     @Test
-    public void testeExistePlayground()
+    public void testeAdicionaModificaPlayground()
     {
-        assertTrue(owner.existPlayground("Campo SP"));
-    }
+        owner.addPlayground(p1);
 
-    @Test
-    public void testeAtualizaPlayground()
-    {
+        assertTrue(owner.existPlayground("Campo SP"));
+        
         systemIn.provideLines("1","Novo Campo SP");
         owner.updatePlaygroundName("Campo SP");
 
