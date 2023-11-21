@@ -51,7 +51,7 @@ public class TestJUnitPlaygroundOwner {
         p1.setCancellationPeriod(10);
         
         systemIn.provideLines("50");
-        playground.setPrice();
+        p1.setPrice();
 
         bal = new eWallet();
         bal.setBalance(1000);
