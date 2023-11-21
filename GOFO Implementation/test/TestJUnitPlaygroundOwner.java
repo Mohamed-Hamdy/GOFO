@@ -95,6 +95,40 @@ public class TestJUnitPlaygroundOwner {
     }
 
     @Test
+    public void testeAtualizaPlaygroundPrice()
+    {
+        owner.addPlayground(p1);
+
+        systemIn.provideLines("3","70");
+        owner.updatePlaygroundName("CampoSP");
+        
+        assertEquals(70,p1.getPrice());
+    }
+
+    @Test
+    public void testeAtualizaPlaygroundStatus()
+    {
+        owner.addPlayground(p1);
+
+        systemIn.provideLines("4","not available");
+        owner.updatePlaygroundName("CampoSP");
+        
+        assertEquals("not available",p1.getStatus());
+    }
+
+    @Test
+    public void testeAtualizaPlaygroundBookTime()
+    {
+        owner.addPlayground(p1);
+
+        systemIn.provideLines("5","10","22");
+        owner.updatePlaygroundName("CampoSP");
+        
+        assertEquals(10,p1.getSlotsBegin());
+        assertEquals(2,p1.getSlotsEnd());
+    }
+
+    @Test
     public void testeAdicionaBalance()
     {
         owner.setBalance(bal);
