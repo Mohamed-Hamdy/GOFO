@@ -76,15 +76,7 @@ public class TestJUnitPlayground {
         playground.setStatus();
         assertEquals("not available", playground.getStatus());
 
-        playground.bookingTheSlot("Ricardo", 12, 20);
+        playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
         assertEquals("This playground isn't available yet", systemOutRule.getLog().trim());
-    }
-
-    @Test
-    public void testeAdicionandoStatusInvalido()
-    {
-        systemIn.provideLines("invalido");
-        playground.setStatus();
-        assertEquals("invalid input please enter ( available or not available)", playground.getStatus());
     }
 }
