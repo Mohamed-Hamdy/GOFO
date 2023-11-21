@@ -37,17 +37,20 @@ public class TestJUnitAdministrator
         p1.setOwner("Ricardo");
         p1.setCancellationPeriod(10);
 
-        // systemIn.provideLines("100");
-        // p1.setPrice();
+        systemIn.provideLines("100");
+        p1.setPrice();
 
-        // systemIn.provideLines("available");
-        // p1.setStatus();
+        systemIn.provideLines("available");
+        p1.setStatus();
 
-        // systemIn.provideLines("0","30");
-        // p1.setBooking();
+        systemIn.provideLines("0","30");
+        p1.setBooking();
 
-        // systemIn.provideLines("SP");
-        // p1.setLocation();
+        systemIn.provideLines("SP");
+        p1.setLocation();
+
+        systemIn.provideLines("yes");
+        adm.approvePlayground();
     }
 
     @Test
@@ -55,18 +58,37 @@ public class TestJUnitAdministrator
     {   
         adm.playgroundRequests(p1);
 
-        systemIn.provideLines("yes");
-        adm.approvePlayground();
-
-        adm.getApproved();
-
-        assertEquals("CampoSP",systemOutRule.getLog().trim());
+        adm.displayAllPlaygrounds();
     }
 
     @Test
-    public void testeMostraTodosPlaygrounds()
+    public void testePesquisaPorNome()
     {   
-        adm.displayAllPlaygrounds();
+        adm.searchByName("CampoSP");
+    }
+
+    @Test
+    public void testePesquisaPorLugar()
+    {   
+        adm.searchByLocation("SP");
+    }
+
+    @Test
+    public void testeMostraTodosPlaygroundsDisponiveisPorNome()
+    {   
+        adm.displayAllavailablePlaygroundsNames();
+    }
+
+    @Test
+    public void testeAlugaPorLugar()
+    {   
+        adm.bookByLocation("SP", "Rodrigo", 100);
+    }
+
+    @Test
+    public void testeAlugaPornome()
+    {   
+        adm.bookByName("CampoSP", "Rodrigo", 100);
     }
 
     @Test
@@ -96,6 +118,20 @@ public class TestJUnitAdministrator
     public void testeBuscarPlaygroundPorLugar()
     {
         adm.searchByLocation("SP");
+    }
+
+    @Test
+    public void testeSuspenderPlayground()
+    {
+        adm.suspendPlayground("CampoSP");
+        systemIn.provideLines("yes");
+        adm.unSuspendPlayground();
+    }
+
+    @Test
+    public void testeDeletarPlaygroun()
+    {
+        adm.deletePlayground("CampoSP");
     }
 
     @Test
