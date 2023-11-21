@@ -125,7 +125,7 @@ public class TestJUnitPlaygroundOwner {
         owner.updatePlaygroundName("CampoSP");
         
         assertEquals(10,p1.getSlotsBegin());
-        assertEquals(2,p1.getSlotsEnd());
+        assertEquals(22,p1.getSlotsEnd());
     }
 
     @Test
