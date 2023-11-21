@@ -69,6 +69,10 @@ public class TestJUnitAdministrator
 
         systemIn.provideLines("yes");
         adm.approvePlayground();
+
+        adm.getApproved();
+
+        assertEquals("CampoSP",systemOutRule.getLog().trim());
     }
 
     @Test
