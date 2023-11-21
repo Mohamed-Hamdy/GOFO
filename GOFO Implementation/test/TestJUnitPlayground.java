@@ -59,7 +59,7 @@ public class TestJUnitPlayground {
     }
 
     @Test
-    public void testeAdicionandoStatusDisponivelEAlugando()
+    public void testeAdicionandoStatusDisponivelEAlugandoECancelando()
     {
         systemIn.provideLines("available");
         playground.setStatus();
@@ -67,6 +67,8 @@ public class TestJUnitPlayground {
 
         playground.bookingTheSlot("Ricardo", "12:00", "20/10/2023");
         assertEquals("not available", playground.getStatus());
+
+        playground.cancelBooking("20/10/2023", "12:00");
     }
 
     @Test
